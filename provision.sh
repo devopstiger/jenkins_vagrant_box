@@ -109,5 +109,19 @@ echo "-- Jenkins: http://localhost:6060      "
 echo "-- Tomcat7: http://localhost:7070      "
 echo "---------------------------------------"
 
+echo "-------- PLUGINS ----------------------"
+echo "-- Installing plugins                  "
+echo "---------------------------------------"
 
+echo "Waiting Jenkins to launch on 6060..."
+until [ "`curl --head --silent http://localhost:6060/cli/ | grep '200 OK'`" != "" ];
+do
+  sleep 0.1
+done
+echo "Jenkins launched, installing plugins..."
 
+cd
+wget http://localhost:6060/jnlpJars/jenkins-cli.jar
+java -jar jenkins-cli.jar -s http://localhost:6060 install-plugin checkstyle cloverphp crap4j dry htmlpublisher jdepend plot pmd violations warnings xunit
+java -jar jenkins-cli.jar -s http://localhost:6060 safe-restart
+echo "finished installing plugins."
