@@ -10,6 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Named boxes, like this one, don't need a URL, since the are looked up
   # in the "vagrant cloud" (https://vagrantcloud.com)
   config.vm.box = "ubuntu/trusty64"
+  #config.vm.box = "parallels/ubuntu-14.04"
   #config.vm.box = "chef/debian-7.4"
 
   # Publish guest port 6060 on host port 6060
@@ -19,7 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |vb|
   #   # Don't boot with headless mode. Use for debugging
   #   vb.gui = true
-  
+
   #   # Use VBoxManage to customize the VM. For example to change memory:
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end

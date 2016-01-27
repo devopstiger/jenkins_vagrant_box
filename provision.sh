@@ -7,7 +7,7 @@ then
 
 	## Install subverison
 	apt-get update
-	apt-get -y install subversion
+	apt-get -y install subversion git
 else
 	echo "CHECK - Subversion already installed"
 fi
@@ -122,13 +122,13 @@ echo "Jenkins launched, installing plugins..."
 
 cd
 wget http://localhost:6060/jnlpJars/jenkins-cli.jar
-java -jar jenkins-cli.jar -s http://localhost:6060 install-plugin checkstyle cloverphp crap4j dry htmlpublisher jdepend plot pmd violations warnings xunit
+java -jar jenkins-cli.jar -s http://localhost:6060 install-plugin git checkstyle cloverphp crap4j dry htmlpublisher jdepend plot pmd violations warnings xunit
 java -jar jenkins-cli.jar -s http://localhost:6060 safe-restart
 echo "finished installing plugins."
 
 echo "Setup Jenkins template for PHP projects..."
 cd
-wget http://localhost:8080/jnlpJars/jenkins-cli.jar
+wget http://localhost:6060/jnlpJars/jenkins-cli.jar
 curl -L https://raw.githubusercontent.com/sebastianbergmann/php-jenkins-template/master/config.xml | \
      java -jar jenkins-cli.jar -s http://localhost:6060 create-job php-template
 java -jar jenkins-cli.jar -s http://localhost:6060 reload-configuration
