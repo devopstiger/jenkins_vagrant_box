@@ -122,7 +122,7 @@ echo "Jenkins launched, installing plugins..."
 
 cd
 wget http://localhost:6060/jnlpJars/jenkins-cli.jar
-java -jar jenkins-cli.jar -s http://localhost:6060 install-plugin git checkstyle cloverphp crap4j dry htmlpublisher jdepend plot pmd violations warnings xunit
+java -jar jenkins-cli.jar -s http://localhost:6060 install-plugin git checkstyle cloverphp crap4j dry htmlpublisher jdepend plot pmd violations warnings xunit chucknorris greenballs
 java -jar jenkins-cli.jar -s http://localhost:6060 safe-restart
 echo "finished installing plugins."
 
