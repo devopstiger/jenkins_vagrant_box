@@ -10,8 +10,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Named boxes, like this one, don't need a URL, since the are looked up
   # in the "vagrant cloud" (https://vagrantcloud.com)
   config.vm.box = "ubuntu/trusty64"
-  #config.vm.box = "parallels/ubuntu-14.04"
-  #config.vm.box = "chef/debian-7.4"
 
   # Publish guest port 6060 on host port 6060
   config.vm.network "forwarded_port", guest: 6060, host: 6060
